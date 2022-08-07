@@ -7,7 +7,8 @@ import MovieCard from './components/MovieCard';
 const App = () => {
 
 
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState([]);
+  const [search_query, setSearch_query] = useState("");
 
 
   const API_URL = "http://www.omdbapi.com/?apikey=d79dec18"
@@ -23,8 +24,8 @@ const App = () => {
 
 
   useEffect(() => {
-    searchMovies("batman")
-  }, [])
+    searchMovies(search_query)
+  }, [search_query])
 
 
 
@@ -38,12 +39,14 @@ const App = () => {
       <div className='search'>
         <input
           placeholder='Search For Movies'
-          value="Superman"
-          onChange={() => { }}
+          value={search_query}
+          onChange={
+            (event) => { setSearch_query(event.target.value) }
+          }
         />
 
         <img src={SearchIcon} alt="search"
-          onClick={() => { }} />
+          onClick={() => { searchMovies(search_query) }} />
       </div>
 
 
@@ -56,7 +59,7 @@ const App = () => {
               < MovieCard movie={i} />
             ))
             : (<div className='empty'>
-              <h1>No Movies Found</h1>
+              <h1>No Movies Found For Query: {search_query}</h1>
             </div>)
         }
       </div>
