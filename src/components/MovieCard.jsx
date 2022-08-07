@@ -9,7 +9,7 @@ const MovieCard = ( {movie} ) => {
             </div>
 
             <div>
-                <img src={movie.poster != "N/A" ? movie.Poster : "https://www.manncat.com/wp-content/uploads/2017/05/placeholder-400x400.png"} alt={movie.Title}
+                <img src={movie.poster !== "N/A" ? movie.Poster : "https://www.manncat.com/wp-content/uploads/2017/05/placeholder-400x400.png"} alt={movie.Title}
                     onClick={() => { }} />
             </div>
 

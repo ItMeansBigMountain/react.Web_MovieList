@@ -1,5 +1,5 @@
 import './App.css';
-import SearchIcon from "./search.svg"
+import SearchIcon from "./images/search.svg"
 import { useState, useEffect } from 'react';
 
 import MovieCard from './components/MovieCard';
