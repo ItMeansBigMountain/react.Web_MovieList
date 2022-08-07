@@ -6,14 +6,20 @@ import MovieCard from './components/MovieCard';
 
 const App = () => {
 
-  const API_URL = "http://www.omdbapi.com/?apikey=d79dec18"
 
+  const [movies, setMovies] = useState();
+
+
+  const API_URL = "http://www.omdbapi.com/?apikey=d79dec18"
 
   const searchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`)
     const data = await response.json();
-    console.log(data)
+    setMovies(data.Search)
+    console.log(data.Search)
   }
+
+
 
 
   useEffect(() => {
@@ -24,6 +30,7 @@ const App = () => {
 
   return (
     <div className="App">
+
 
       <h1>Movie Land</h1>
 
@@ -43,16 +50,16 @@ const App = () => {
 
       {/* MOVIE LIST */}
       <div className='container'>
-        < MovieCard  />
-        < MovieCard  />
-        < MovieCard  />
-        < MovieCard  />
-        < MovieCard  />
-        < MovieCard  />
+        {
+          movies?.length > 0
+            ? (movies.map(i =>
+              < MovieCard movie={i} />
+            ))
+            : (<div className='empty'>
+              <h1>No Movies Found</h1>
+            </div>)
+        }
       </div>
-
-
-
 
 
     </div>

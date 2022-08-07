@@ -3,18 +3,19 @@ import React from 'react'
 const MovieCard = ( {movie} ) => {
     return (
         <div className='movie'>
+
             <div>
-                <p>YEAR</p>
+                <p>{movie.Year}</p>
             </div>
 
             <div>
-                <img src="https://www.manncat.com/wp-content/uploads/2017/05/placeholder-400x400.png" alt="movie title"
+                <img src={movie.poster != "N/A" ? movie.Poster : "https://www.manncat.com/wp-content/uploads/2017/05/placeholder-400x400.png"} alt={movie.Title}
                     onClick={() => { }} />
             </div>
 
             <div>
-                <span> MOVIE TYPE </span>
-                <h3>TITLE</h3>
+                <span> {movie.Type} </span>
+                <h3>{movie.Title}</h3>
             </div>
 
         </div>
